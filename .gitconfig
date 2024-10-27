@@ -1,0 +1,70 @@
+[user]
+	name = Aaron Ruan
+	email = aaron212cn@outlook.com
+	signingkey = ~/.ssh/id_ed25519.pub
+	useConfigOnly = true
+
+[commit]
+	gpgsign = true
+
+[core]
+	editor = zed -w
+	quotepath = false
+	longpaths = true
+	autocrlf = input
+	trustctime = false
+	excludesfile = ~/.gitignore_global
+	attributesfile = ~/.gitattributes_global
+	ignorecase = true
+	untrackedcache = true
+	pager = less --mouse --wheel-lines=1
+
+[color]
+	ui = auto
+
+[diff "text"]
+	textconv = cat
+
+[mergetool]
+	keepBackup = false
+
+[lfs]
+	concurrenttransfers = 16
+	fetchrecentrefsdays = 0
+	pruneoffsetdays = 0
+	dialtimeout = 3
+	tlstimeout = 3
+
+[lfs "transfer"]
+	maxretries = 1
+	maxretrydelay = 2
+
+[rebase]
+	backend = merge
+
+[pull]
+	rebase = true
+
+[safe]
+	directory = *
+
+[push]
+	autoSetupRemote = true
+
+[gpg]
+	format = ssh
+
+[credential]
+	helper = /usr/local/share/gcm-core/git-credential-manager
+
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+
+[format]
+	signoff = true
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
