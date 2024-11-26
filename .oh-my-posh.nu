@@ -6,7 +6,8 @@ if ($env.config? | is-not-empty) {
 $env.POWERLINE_COMMAND = 'oh-my-posh'
 $env.POSH_THEME = (echo "/Users/aaron212/.omp.json")
 $env.PROMPT_INDICATOR = ""
-$env.POSH_SESSION_ID = (echo "a2a769e0-f140-4228-a388-6f8a9390dbdb")
+$env.POSH_SESSION_ID = (echo "316eea90-85da-494a-bf05-daa5a76e9908")
+$env.POSH_SHELL = "nu"
 $env.POSH_SHELL_VERSION = (version | get version)
 
 let _omp_executable: string = (echo "/opt/homebrew/bin/oh-my-posh")
@@ -62,3 +63,4 @@ $env.PROMPT_COMMAND = {||
 
 $env.PROMPT_COMMAND_RIGHT = {|| _omp_get_prompt right }
 
+$env.TRANSIENT_PROMPT_COMMAND = {|| _omp_get_prompt transient }
