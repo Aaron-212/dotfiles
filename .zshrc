@@ -17,6 +17,3 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   source ~/dotfiles/profiles/darwin.zsh
 fi
-
-# oh-my-posh
-eval "$(oh-my-posh init zsh --config ~/dotfiles/omp.json)"

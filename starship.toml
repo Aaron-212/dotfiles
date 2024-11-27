@@ -1,0 +1,76 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Use custom format
+format = '''$username$directory$git_branch$git_state$git_status$status$cmd_duration$all'''
+
+# Disable the blank line at the start of the prompt
+add_newline = true
+
+[directory]
+style = 'fg:bright-white bg:bright-black'
+truncate_to_repo = false
+format = '[](bright-black)[$read_only]($read_only_style)[$path]($style)[](bright-black)'
+read_only = "ReadOnly "
+read_only_style = "fg:bright-red bg:bright-black"
+
+[git_branch]
+style = 'fg:bright-white bg:purple'
+format = ' [](purple)[$symbol$branch(:$remote_branch) ]($style)'
+
+[git_state]
+style = 'fg:bright-white bg:cyan'
+format = '[ $state( $progress_current/$progress_total) ]($style)'
+
+[git_status]
+up_to_date = "O"
+style = 'fg:bright-white bg:blue'
+format = '([ $all_status$ahead_behind]($style))[](blue)'
+
+[username]
+style_user = 'white bold'
+style_root = 'black bold'
+format = 'user: [$user]($style) '
+disabled = false
+
+#
+# Package Versions
+#
+
+[docker_context]
+disabled = true
+
+[rust]
+format = ' [](bright-yellow)[Rust@$version](fg:black bg:bright-yellow)[](bright-yellow)'
+version_format = '${raw}'
+
+[nodejs]
+format = ' [](green)[NodeJS@$version](fg:black bg:green)[](green)'
+version_format = '${raw}'
+
+[python]
+format = ' [](blue)[Python@$version](fg:bright-white bg:blue)[](blue)'
+version_format = '${raw}'
+
+[ruby]
+format = ' [](red)[Ruby@$version](fg:bright-white bg:red)[](red)'
+version_format = '${raw}'
+
+[java]
+format = ' [](red)[Java@$version](fg:bright-white bg:red)[](red)'
+version_format = '${raw}'
+
+# TODO: Wait for conditional styling support
+[status]
+style = 'bg:red fg:bright-white'
+symbol = "ERROR"
+success_symbol = ""
+format = ' [](red)[$symbol(@$status_number)]($style)[](red)'
+map_symbol = true
+disabled = false
+
+[cmd_duration]
+style = "bg:bright-black fg:bright-white"
+min_time = 500
+format = ' [](bright-black)[$duration]($style)[](bright-black)'
+disabled = false
