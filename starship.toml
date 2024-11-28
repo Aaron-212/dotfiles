@@ -2,7 +2,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 # Use custom format
-format = '''$shell$username$status$cmd_duration$directory$git_branch$git_state$git_status$package$all'''
+format = '''$shell$username$hostname$status$cmd_duration$directory$git_branch$git_state$git_status$package$all'''
 
 # Disable the blank line at the start of the prompt
 add_newline = true
@@ -33,10 +33,14 @@ style = 'fg:bright-white bg:blue'
 format = '([ $all_status$ahead_behind]($style))[](blue)'
 
 [username]
-style_user = 'white bold'
-style_root = 'black bold'
-format = 'user: [$user]($style) '
+style_user = 'fg:white bg:bright-black'
+style_root = 'fg:bright-red bg:bright-black'
+format = ' [](bright-black)[$user ]($style)'
 disabled = false
+
+[hostname]
+style = 'fg:black bg:cyan'
+format = '[ @$hostname]($style)[](cyan)'
 
 [package]
 format = ' [](cyan)[v$version](fg:black bg:cyan)[](cyan)'
@@ -47,6 +51,9 @@ version_format = '${raw}'
 #
 
 [docker_context]
+disabled = true
+
+[container]
 disabled = true
 
 [rust]
