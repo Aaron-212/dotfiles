@@ -2,15 +2,20 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 # Use custom format
-format = '''$username$directory$git_branch$git_state$git_status$status$cmd_duration$all'''
+format = '''$shell$username$status$cmd_duration$directory$git_branch$git_state$git_status$package$all'''
 
 # Disable the blank line at the start of the prompt
 add_newline = true
 
+[shell]
+style = 'fg:black bg:cyan'
+format = '[](cyan)[$indicator]($style)[](cyan)'
+disabled = false
+
 [directory]
 style = 'fg:bright-white bg:bright-black'
 truncate_to_repo = false
-format = '[](bright-black)[$read_only]($read_only_style)[$path]($style)[](bright-black)'
+format = ' [](bright-black)[$read_only]($read_only_style)[$path]($style)[](bright-black)'
 read_only = "ReadOnly "
 read_only_style = "fg:bright-red bg:bright-black"
 
@@ -32,6 +37,10 @@ style_user = 'white bold'
 style_root = 'black bold'
 format = 'user: [$user]($style) '
 disabled = false
+
+[package]
+format = ' [](cyan)[v$version](fg:black bg:cyan)[](cyan)'
+version_format = '${raw}'
 
 #
 # Package Versions
