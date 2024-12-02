@@ -1,2 +1,7 @@
 # mkcd alias
-def mkcd [dir] { mkdir $dir; cd $dir }
+def --env mkcd [directory: path]: nothing -> nothing {
+    mkdir $directory
+    cd $directory
+}
+
+alias ofile = /usr/bin/open

@@ -56,6 +56,10 @@ disabled = true
 [container]
 disabled = true
 
+[cmake]
+format = ' [](bright-purple)[CMake@$version](fg:black bg:bright-purple)[](bright-purple)'
+version_format = '${raw}'
+
 [rust]
 format = ' [](bright-yellow)[Rust@$version](fg:black bg:bright-yellow)[](bright-yellow)'
 version_format = '${raw}'
@@ -76,6 +80,10 @@ version_format = '${raw}'
 format = ' [](red)[Java@$version](fg:bright-white bg:red)[](red)'
 version_format = '${raw}'
 
+[zig]
+format = ' [](yellow)[Zig@$version](fg:black bg:yellow)[](yellow)'
+version_format = '${raw}'
+
 # TODO: Wait for conditional styling support
 [status]
 style = 'bg:red fg:bright-white'
@@ -87,6 +95,6 @@ disabled = false
 
 [cmd_duration]
 style = "bg:bright-black fg:bright-white"
-min_time = 500
+min_time = 1000
 format = ' [](bright-black)[$duration]($style)[](bright-black)'
 disabled = false
