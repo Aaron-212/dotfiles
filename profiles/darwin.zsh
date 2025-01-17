@@ -7,11 +7,6 @@ then
   compinit
 fi
 
-# zsh syntax highlighting
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# zsh-autocomplete
-source /opt/homebrew/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 
 # Homebrew
 PATH="/opt/homebrew/opt/ruby/bin:$PATH"

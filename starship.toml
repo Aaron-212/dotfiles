@@ -1,10 +1,7 @@
-# Get editor completions based on the config schema
 "$schema" = 'https://starship.rs/config-schema.json'
 
-# Use custom format
 format = '''$shell$username$hostname$status$cmd_duration$directory$git_branch$git_state$git_status$package$all'''
 
-# Disable the blank line at the start of the prompt
 add_newline = true
 
 [shell]
@@ -14,10 +11,15 @@ disabled = false
 
 [directory]
 style = 'fg:bright-white bg:bright-black'
-truncate_to_repo = false
 format = ' [](bright-black)[$read_only]($read_only_style)[$path]($style)[](bright-black)'
+truncation_length = 0
+
+before_repo_root_style = 'fg:bright-white bg:purple'
+repo_root_style = 'fg:bright-white bg:bright-black'
+repo_root_format = ' [](purple)[$read_only]($read_only_style)[git $before_root_path]($before_repo_root_style)[ $repo_root]($repo_root_style)[$path]($style)[](bright-black)'
 read_only = "ReadOnly "
 read_only_style = "fg:bright-red bg:bright-black"
+use_os_path_sep = false
 
 [git_branch]
 style = 'fg:bright-white bg:purple'
@@ -60,6 +62,10 @@ disabled = true
 format = ' [](bright-purple)[CMake@$version](fg:black bg:bright-purple)[](bright-purple)'
 version_format = '${raw}'
 
+[deno]
+format = ' [](black)[Deno@$version](fg:bright-white bg:black)[](black)'
+version_format = '${raw}'
+
 [rust]
 format = ' [](bright-yellow)[Rust@$version](fg:black bg:bright-yellow)[](bright-yellow)'
 version_format = '${raw}'
@@ -70,6 +76,10 @@ version_format = '${raw}'
 
 [python]
 format = ' [](blue)[Python@$version](fg:bright-white bg:blue)[](blue)'
+version_format = '${raw}'
+
+[golang]
+format = ' [](bright-cyan)[Go@$version](fg:black bg:bright-cyan)[](bright-cyan)'
 version_format = '${raw}'
 
 [ruby]
@@ -84,11 +94,29 @@ version_format = '${raw}'
 format = ' [](yellow)[Zig@$version](fg:black bg:yellow)[](yellow)'
 version_format = '${raw}'
 
+[mojo]
+format = ' [](red)[Mojo@$version](fg:bright-white bg:red)[](red)'
+
+[conda]
+format = ' [](green)[CondaVENV](fg:bright-white bg:green)[](green)'
+
+[swift]
+format = ' [](cyan)[Swift@$version](fg:bright-white bg:cyan)[](cyan)'
+
+[dotnet]
+format = ' [](green)[.NET@$version/$tfm](fg:bright-white bg:green)[](green)'
+
+[haskell]
+format = ' [](purple)[Haskell@$version](fg:bright-white bg:purple)[](purple)'
+
 # TODO: Wait for conditional styling support
 [status]
 style = 'bg:red fg:bright-white'
 symbol = "ERROR"
 success_symbol = ""
+not_executable_symbol = "NOT EXEC"
+not_found_symbol = "NOT FOUND"
+sigint_symbol = "SIGINT"
 format = ' [](red)[$symbol(@$status_number)]($style)[](red)'
 map_symbol = true
 disabled = false
