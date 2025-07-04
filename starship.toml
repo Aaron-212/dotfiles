@@ -1,8 +1,12 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = '''$shell$username$hostname$status$cmd_duration$directory$git_branch$git_state$git_status$package$all'''
+format = """$shell$username$hostname$directory$git_branch$git_commit$git_state$git_status$package$all$fill$status$cmd_duration$time\n$character"""
 
-add_newline = true
+[line_break]
+disabled = true
+
+[fill]
+symbol = ' '
 
 [shell]
 style = 'fg:black bg:cyan'
@@ -23,7 +27,12 @@ use_os_path_sep = false
 
 [git_branch]
 style = 'fg:bright-white bg:purple'
-format = ' [](purple)[$symbol$branch(:$remote_branch) ]($style)'
+format = ' [](purple)[$branch(:$remote_branch) ]($style)'
+truncation_length = 16
+
+[git_commit]
+style = 'fg:bright-white bg:cyan'
+format = '[ $hash ]($style)'
 
 [git_state]
 style = 'fg:bright-white bg:cyan'
@@ -62,8 +71,16 @@ disabled = true
 format = ' [](bright-purple)[CMake@$version](fg:black bg:bright-purple)[](bright-purple)'
 version_format = '${raw}'
 
+[c]
+format = ' [](bright-white)[$name@$version](fg:black bg:bright-white)[](bright-white)'
+version_format = '${raw}'
+
 [deno]
-format = ' [](black)[Deno@$version](fg:bright-white bg:black)[](black)'
+format = ' [](bright-white)[Deno@$version](fg:black bg:bright-white)[](bright-white)'
+version_format = '${raw}'
+
+[bun]
+format = ' [](bright-white)[Bun@$version](fg:black bg:bright-white)[](bright-white)'
 version_format = '${raw}'
 
 [rust]
@@ -102,12 +119,23 @@ format = ' [](green)[CondaVENV](fg:bright-white bg:green)[](green)'
 
 [swift]
 format = ' [](cyan)[Swift@$version](fg:bright-white bg:cyan)[](cyan)'
+version_format = '${raw}'
 
 [dotnet]
 format = ' [](green)[.NET@$version/$tfm](fg:bright-white bg:green)[](green)'
+version_format = '${raw}'
 
 [haskell]
 format = ' [](purple)[Haskell@$version](fg:bright-white bg:purple)[](purple)'
+version_format = '${raw}'
+
+[gradle]
+format = ' [](cyan)[Gradle@$version](fg:bright-white bg:cyan)[](cyan)'
+version_format = '${raw}'
+
+[kotlin]
+format = ' [](purple)[Kotlin@$version](fg:bright-white bg:purple)[](purple)'
+version_format = '${raw}'
 
 # TODO: Wait for conditional styling support
 [status]
@@ -126,3 +154,8 @@ style = "bg:bright-black fg:bright-white"
 min_time = 1000
 format = ' [](bright-black)[$duration]($style)[](bright-black)'
 disabled = false
+
+[time]
+disabled = false
+style = "bg:bright-black fg:bright-white"
+format = ' [](bright-black)[$time]($style)[](bright-black)'
