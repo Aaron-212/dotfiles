@@ -1,8 +1,7 @@
-"$schema" = 'https://starship.rs/config-schema.json'
+"$schema" = "https://starship.rs/config-schema.json"
 
 format = """$username$hostname${env_var.VIRTUAL_ENV_PROMPT}\
-$directory$git_branch$git_commit$git_state$git_status\
-$package$all$fill\
+$directory$vcs$package$all$fill\
 $status$cmd_duration$time\n\
 $character"""
 
@@ -10,42 +9,49 @@ $character"""
 disabled = true
 
 [fill]
-symbol = ' '
+symbol = " "
 
 [env_var.VIRTUAL_ENV_PROMPT]
-format = '[](cyan)[VENV ](fg:bright-white bg:cyan)[ $env_value](fg:bright-white bg:bright-black)[](bright-black) '
+format = "[](cyan)[VENV ](fg:bright-white bg:cyan)[ $env_value](fg:bright-white bg:bright-black)[](bright-black) "
 
 [shell]
-style = 'fg:black bg:cyan'
-format = '[](cyan)[$indicator]($style)[](cyan) '
+style = "fg:black bg:cyan"
+format = "[](cyan)[$indicator]($style)[](cyan) "
 disabled = true
 
 [directory]
-style = 'fg:bright-white bg:bright-black'
-format = '[](bright-black)[$read_only]($read_only_style)[$path]($style)[](bright-black) '
+style = "fg:bright-white bg:bright-black"
+format = "[](bright-black)[$read_only]($read_only_style)[$path]($style)[](bright-black) "
 truncation_length = 0
 
-before_repo_root_style = 'fg:bright-white bg:purple'
-repo_root_style = 'fg:bright-white bg:bright-black'
-repo_root_format = '[](purple)[$read_only]($read_only_style)[git $before_root_path]($before_repo_root_style)[ $repo_root]($repo_root_style)[$path]($style)[](bright-black) '
+before_repo_root_style = "fg:bright-white bg:purple"
+repo_root_style = "fg:bright-white bg:bright-black"
+repo_root_format = "[](purple)[$read_only]($read_only_style)[git $before_root_path]($before_repo_root_style)[ $repo_root]($repo_root_style)[$path]($style)[](bright-black) "
 read_only = "ReadOnly "
 read_only_style = "fg:bright-red bg:bright-black"
 use_os_path_sep = false
 
+[vcs]
+order = ["jj", "git"]
+
 [git_branch]
-style = 'fg:bright-white bg:purple'
-format = '[](purple)[#$branch(:$remote_branch) ]($style)'
+disabled = true
+style = "fg:bright-white bg:purple"
+format = "[](purple)[#$branch(:$remote_branch) ]($style)"
 truncation_length = 16
 
 [git_commit]
-style = 'fg:bright-white bg:cyan'
-format = '[ $hash ]($style)'
+disabled = true
+style = "fg:bright-white bg:cyan"
+format = "[ $hash ]($style)"
 
 [git_state]
-style = 'fg:bright-white bg:cyan'
-format = '[ $state( $progress_current/$progress_total) ]($style)'
+disabled = true
+style = "fg:bright-white bg:cyan"
+format = "[ $state( $progress_current/$progress_total) ]($style)"
 
 [git_status]
+disabled = true
 ahead = "↑$count"
 behind = "↓$count"
 diverged = "↑$ahead_count↓$behind_count"
@@ -53,22 +59,22 @@ up_to_date = "✓"
 renamed = "→"
 deleted = "✗"
 stashed = "\\$$count"
-style = 'fg:bright-white bg:blue'
-format = '([ $all_status$ahead_behind]($style))[](blue) '
+style = "fg:bright-white bg:blue"
+format = "([ $all_status$ahead_behind]($style))[](blue) "
 
 [username]
-style_user = 'fg:bright-white bg:bright-black'
-style_root = 'fg:bright-red bg:bright-black'
-format = '[](bright-black)[$user]($style)[](bright-black) '
+style_user = "fg:bright-white bg:bright-black"
+style_root = "fg:bright-red bg:bright-black"
+format = "[](bright-black)[$user ]($style)"
 disabled = false
 
 [hostname]
-style = 'fg:black bg:cyan'
-format = '[](cyan)[@$hostname]($style)[](cyan) '
+style = "fg:bright-white bg:cyan"
+format = "[ @$hostname]($style)[](cyan) "
 
 [package]
-format = '[](cyan)[v$version](fg:black bg:cyan)[](cyan) '
-version_format = '${raw}'
+format = "[](cyan)[v$version](fg:black bg:cyan)[](cyan) "
+version_format = "${raw}"
 
 #
 # Package Versions
@@ -81,96 +87,109 @@ disabled = true
 disabled = true
 
 [cmake]
-format = '[](bright-purple)[CMake@$version](fg:black bg:bright-purple)[](bright-purple) '
-version_format = '${raw}'
+format = "[](bright-purple)[CMake@$version](fg:black bg:bright-purple)[](bright-purple) "
+version_format = "${raw}"
 
 [c]
-format = '[](bright-white)[$name@$version](fg:black bg:bright-white)[](bright-white) '
-version_format = '${raw}'
+format = "[](bright-white)[$name@$version](fg:black bg:bright-white)[](bright-white) "
+version_format = "${raw}"
 
 [deno]
-format = '[](bright-white)[Deno@$version](fg:black bg:bright-white)[](bright-white) '
-version_format = '${raw}'
+format = "[](bright-white)[Deno@$version](fg:black bg:bright-white)[](bright-white) "
+version_format = "${raw}"
 
 [bun]
-format = '[](bright-white)[Bun@$version](fg:black bg:bright-white)[](bright-white) '
-version_format = '${raw}'
+format = "[](bright-white)[Bun@$version](fg:black bg:bright-white)[](bright-white) "
+version_format = "${raw}"
 
 [rust]
-format = '[](bright-yellow)[Rust@$version](fg:black bg:bright-yellow)[](bright-yellow) '
-version_format = '${raw}'
+format = "[](bright-yellow)[Rust@$version](fg:black bg:bright-yellow)[](bright-yellow) "
+version_format = "${raw}"
 
 [nodejs]
-format = '[](green)[NodeJS@$version](fg:black bg:green)[](green) '
-version_format = '${raw}'
+format = "[](green)[NodeJS@$version](fg:black bg:green)[](green) "
+version_format = "${raw}"
 
 [python]
-format = '[](blue)[Python@$version](fg:bright-white bg:blue)[](blue) '
-version_format = '${raw}'
+format = "[](blue)[Python@$version](fg:bright-white bg:blue)[](blue) "
+version_format = "${raw}"
+
+[pixi]
+format = "[](blue)[Pixi@$version](fg:bright-white bg:blue)[](blue) "
+version_format = "${raw}"
 
 [golang]
-format = '[](bright-cyan)[Go@$version](fg:black bg:bright-cyan)[](bright-cyan) '
-version_format = '${raw}'
+format = "[](bright-cyan)[Go@$version](fg:black bg:bright-cyan)[](bright-cyan) "
+version_format = "${raw}"
 
 [ruby]
-format = '[](red)[Ruby@$version](fg:bright-white bg:red)[](red) '
-version_format = '${raw}'
+format = "[](red)[Ruby@$version](fg:bright-white bg:red)[](red) "
+version_format = "${raw}"
 
 [java]
-format = '[](red)[Java@$version](fg:bright-white bg:red)[](red) '
-version_format = '${raw}'
+format = "[](red)[Java@$version](fg:bright-white bg:red)[](red) "
+version_format = "${raw}"
 
 [zig]
-format = '[](yellow)[Zig@$version](fg:black bg:yellow)[](yellow) '
-version_format = '${raw}'
+format = "[](yellow)[Zig@$version](fg:black bg:yellow)[](yellow) "
+version_format = "${raw}"
 
 [mojo]
-format = '[](red)[Mojo@$version](fg:bright-white bg:red)[](red) '
+format = "[](red)[Mojo@$version](fg:bright-white bg:red)[](red) "
 
 [conda]
-format = '[](green)[CondaVENV](fg:bright-white bg:green)[](green) '
+format = "[](green)[CondaVENV](fg:bright-white bg:green)[](green) "
 
 [swift]
-format = '[](cyan)[Swift@$version](fg:bright-white bg:cyan)[](cyan) '
-version_format = '${raw}'
+format = "[](cyan)[Swift@$version](fg:bright-white bg:cyan)[](cyan) "
+version_format = "${raw}"
 
 [dotnet]
-format = '[](green)[.NET@$version/$tfm](fg:bright-white bg:green)[](green) '
-version_format = '${raw}'
+format = "[](green)[.NET@$version/$tfm](fg:bright-white bg:green)[](green) "
+version_format = "${raw}"
 
 [haskell]
-format = '[](purple)[Haskell@$version](fg:bright-white bg:purple)[](purple) '
-version_format = '${raw}'
+format = "[](purple)[Haskell@$version](fg:bright-white bg:purple)[](purple) "
+version_format = "${raw}"
 
 [gradle]
-format = '[](cyan)[Gradle@$version](fg:bright-white bg:cyan)[](cyan) '
-version_format = '${raw}'
+format = "[](cyan)[Gradle@$version](fg:bright-white bg:cyan)[](cyan) "
+version_format = "${raw}"
+
+[maven]
+format = "[](red)[Maven@$version](fg:bright-white bg:red)[](red) "
+version_format = "${raw}"
 
 [kotlin]
-format = '[](purple)[Kotlin@$version](fg:bright-white bg:purple)[](purple) '
-version_format = '${raw}'
+format = "[](purple)[Kotlin@$version](fg:bright-white bg:purple)[](purple) "
+version_format = "${raw}"
+
+[nix_shell]
+format = "[](blue)[NixShell$state$name](fg:bright-white bg:blue)[](blue) "
+impure_msg = "-#"
+pure_msg = "+#"
 
 ### Right prompts
 
 # TODO: Wait for conditional styling support
 [status]
-style = 'bg:red fg:bright-white'
+style = "bg:red fg:bright-white"
 symbol = "ERROR"
 success_symbol = ""
 not_executable_symbol = "NOT EXEC"
 not_found_symbol = "NOT FOUND"
 sigint_symbol = "SIGINT"
-format = ' [](red)[$symbol(@$status_number)]($style)[](red)'
+format = " [](red)[$symbol(@$status_number)]($style)[](red)"
 map_symbol = true
 disabled = false
 
 [cmd_duration]
 style = "bg:bright-black fg:bright-white"
 min_time = 1000
-format = ' [](bright-black)[$duration]($style)[](bright-black)'
+format = " [](bright-black)[$duration]($style)[](bright-black)"
 disabled = false
 
 [time]
 disabled = false
 style = "bg:bright-black fg:bright-white"
-format = ' [](bright-black)[$time]($style)[](bright-black)'
+format = " [](bright-black)[$time]($style)[](bright-black)"

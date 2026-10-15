@@ -1,14 +1,14 @@
 [user]
 	name = Aaron Ruan
-	email = i@ar212.com
-	signingkey = ~/.ssh/id_ed25519.pub
+	email = me@aaron212.com
+	signingKey = /Users/aaron212/.ssh/id_ecdsa_sk_rk_ssh.pub
 	useConfigOnly = true
 
 [commit]
 	gpgsign = true
 
 [core]
-	editor = zed -w
+	editor = edit
 	quotepath = false
 	longpaths = true
 	autocrlf = input
@@ -64,19 +64,20 @@
 	required = true
 [alias]
 	count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
+	safe-push = push --force-if-includes
+	please = push --force-with-lease
+	pfwl = push --force-with-lease
 [merge]
 	tool = opendiff
 [mergetool "opendiff"]
 	trustExitCode = true
 [init]
-	defaultBranch = master
+	defaultBranch = main
 [http]
 	postBuffer = 655360000
 [merge "lfs-text"]
 	driver = git lfs merge-driver --ancestor %O --current %A --other %B --marker-size %L --output %A --program 'git merge-file --stdout --marker-size=%%L %%A %%O %%B >%%D'
 [protocol]
 	version = 1
-[credential]
-	helper = /usr/local/share/gcm-core/git-credential-manager
-[credential "https://dev.azure.com"]
-	useHttpPath = true
+[includeIf "gitdir:/Users/aaron212/Repos/baosight/"]
+	path = /Users/aaron212/Repos/baosight/.gitconfig
