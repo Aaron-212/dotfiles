@@ -81,3 +81,5 @@
 	version = 1
 [includeIf "gitdir:/Users/aaron212/Repos/baosight/"]
 	path = /Users/aaron212/Repos/baosight/.gitconfig
+[url "git@github.com:"]
+	pushInsteadOf = https://github.com/

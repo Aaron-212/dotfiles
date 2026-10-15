@@ -1,3 +1,3 @@
 # dotfiles
 
-Private
+My dotfiles
