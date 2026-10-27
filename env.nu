@@ -46,9 +46,6 @@ if ($env | get -o NO_STARSHIP | default null) != "true" {
 # Carapace
 $env.CARAPACE_BRIDGES = "zsh,fish,bash"
 
-# SCCache
-# $env.RUSTC_WRAPPER = "/opt/homebrew/bin/sccache"
-
 # VENV prompt
 $env.VIRTUAL_ENV_DISABLE_PROMPT = true
 

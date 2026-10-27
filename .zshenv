@@ -38,9 +38,6 @@ export HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS="1"
 # Carapace
 export CARAPACE_BRIDGES="zsh,fish,bash"
 
-# SCCache
-# export RUSTC_WRAPPER="/opt/homebrew/bin/sccache"
-
 # q
 export Q_DEFAULT_SERVER="https://dns.alidns.com"
 
