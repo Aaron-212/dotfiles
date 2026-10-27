@@ -5,14 +5,10 @@ compinit
 zstyle ':completion:*' menu select
 
 # Clear the current command line with Ctrl+C.
-clear-command-line() {
-    export BUFFER=""
-    export CURSOR=0
-}
-zle -N clear-command-line
-bindkey -M emacs '^C' clear-command-line
-bindkey -M viins '^C' clear-command-line
-bindkey -M vicmd '^C' clear-command-line
+bindkey '^M' self-insert
+
+# Cmd+Enter executes the command (Ghostty sends F12)
+bindkey '\e[24~' accept-line
 
 eval "$(mise activate zsh)"
 eval "$(zoxide init zsh)"

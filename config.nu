@@ -39,6 +39,20 @@ $env.config.keybindings ++= [
             {edit: Clear}
         ]
     }
+    {
+        name: enter_newline
+        modifier: none
+        keycode: enter
+        mode: [emacs vi_insert]
+        event: {edit: insertnewline}
+    }
+    {
+        name: cmd_enter_execute
+        modifier: none
+        keycode: f12
+        mode: [emacs vi_insert]
+        event: {send: enter}
+    }
 ]
 
 source "~/dotfiles/custom.nu"
