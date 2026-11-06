@@ -35,14 +35,6 @@ let upgrade_greedy_casks = [
 $env.HOMEBREW_UPGRADE_GREEDY_CASKS = $upgrade_greedy_casks | str join ", "
 $env.HOMEBREW_NO_UPGRADE_AUTO_UPDATES_CASKS = "1"
 
-# Starship
-if ($env | get -o NO_STARSHIP | default null) != "true" {
-    $env.STARSHIP_CONFIG = $"($env.HOME)/dotfiles/starship.toml"
-} else {
-    # Disable Starship
-    $env.STARSHIP_CONFIG = null
-}
-
 # Carapace
 $env.CARAPACE_BRIDGES = "zsh,fish,bash"
 

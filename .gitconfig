@@ -63,6 +63,7 @@
 	process = git-lfs filter-process
 	required = true
 [alias]
+	pt = "!f() { if [ \"$#\" -ne 1 ]; then echo 'usage: git pt <tag>' >&2; return 1; fi; git tag \"$1\" && git -c push.followTags=false push --atomic origin HEAD \"refs/tags/$1\"; }; f"
 	count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
 	safe-push = push --force-if-includes
 	please = push --force-with-lease

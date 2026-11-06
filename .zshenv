@@ -1,4 +1,5 @@
 # PATH (same priority as env.nu)
+eval "$(/opt/homebrew/bin/brew shellenv)"
 typeset -U path PATH
 path=(
     "$HOME/go/bin"
@@ -7,8 +8,8 @@ path=(
     "$HOME/.modular/bin"
     "$HOME/.local/bin"
     "$HOME/.cargo/bin"
-    "$(/opt/homebrew/bin/brew --prefix)/sbin"
-    "$(/opt/homebrew/bin/brew --prefix)/bin"
+    "/opt/homebrew/bin"
+    "/opt/homebrew/sbin"
     "$(/opt/homebrew/bin/brew --prefix icu4c@78)/sbin"
     "$(/opt/homebrew/bin/brew --prefix icu4c@78)/bin"
     "$(/opt/homebrew/bin/brew --prefix llvm)/bin"
