@@ -23,7 +23,8 @@ export PATH
 
 # General
 export EDITOR="zed"
-export PAGER="less -R --mouse"
+export PAGER="less"
+export LESS="-F -M -K --wheel-lines=1"
 export LANG="zh_CN.UTF-8"
 export LANGUAGE="zh_CN.UTF-8:zh_TW.UTF-8:en_US.UTF-8"
 

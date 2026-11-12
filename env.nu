@@ -18,7 +18,8 @@ path add $"($env.HOME)/go/bin"
 
 # General
 $env.EDITOR = "zed"
-$env.PAGER = "less -R --mouse"
+$env.PAGER = "less"
+$env.LESS = "-F -M -K --wheel-lines=1"
 $env.LANG = "zh_CN.UTF-8"
 $env.LANGUAGE = "zh_CN.UTF-8:zh_TW.UTF-8:en_US.UTF-8"
 

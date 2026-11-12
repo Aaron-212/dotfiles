@@ -17,7 +17,7 @@
 	attributesfile = ~/.gitattributes_global
 	ignorecase = true
 	untrackedcache = true
-	pager = less --mouse --wheel-lines=1
+	pager = less
 
 [color]
 	ui = auto
@@ -62,6 +62,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
 [alias]
 	pt = "!f() { if [ \"$#\" -ne 1 ]; then echo 'usage: git pt <tag>' >&2; return 1; fi; git tag \"$1\" && git -c push.followTags=false push --atomic origin HEAD \"refs/tags/$1\"; }; f"
 	count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
@@ -70,19 +71,27 @@
 	pfwl = push --force-with-lease
 [merge]
 	tool = opendiff
+
 [mergetool "opendiff"]
 	trustExitCode = true
+
 [init]
 	defaultBranch = main
+
 [http]
 	postBuffer = 655360000
+
 [merge "lfs-text"]
 	driver = git lfs merge-driver --ancestor %O --current %A --other %B --marker-size %L --output %A --program 'git merge-file --stdout --marker-size=%%L %%A %%O %%B >%%D'
+
 [protocol]
 	version = 1
+
 [includeIf "gitdir:/Users/aaron212/Repos/baosight/"]
 	path = /Users/aaron212/Repos/baosight/.gitconfig
+
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
+
 [ghq]
 	root = ~/Repos
