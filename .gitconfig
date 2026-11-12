@@ -84,3 +84,5 @@
 	path = /Users/aaron212/Repos/baosight/.gitconfig
 [url "git@github.com:"]
 	pushInsteadOf = https://github.com/
+[ghq]
+	root = ~/Repos
